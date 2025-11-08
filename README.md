@@ -24,7 +24,7 @@ This repository contains a single-purpose script, `audio_analysis_smoke.py`, tha
 4. **Primary model call** (`call_model`): submits the request with `modalities=["text", "audio"]` so the API knows to expect audio input/output.
 5. **Response parsing** (`extract_text_from_response` + `parse_json_or_raise`): normalizes SDK response shapes, strips any non-JSON noise, and attempts to decode the payload into a Python dict.
 6. **Continuation safety net** (`continue_if_truncated`): if the first reply is truncated or unparsable, a second request asks the model to finish the JSON, seeding it with the partial text.
-7. **Result persistence** (`save_json`, `save_raw_text`): successful JSON is saved as `analysis_result_<timestamp>.json`. Any partial or continuation outputs are written to timestamped `.txt` files for debugging. All files live in the repo root.
+7. **Result persistence** (`save_json`, `save_raw_text`): outputs now land in `Results/`, using the audio filename stem (e.g., `sample.json`, `sample_raw.txt`). That way every run stays grouped beside its artifacts.
 8. **Console preview**: after saving, the script prints the path of the JSON file, the `finish_reason` returned by the API, and the first ~1200 characters of the model output for quick inspection.
 
 ## Running the Script

@@ -1,0 +1,6 @@
+__pycache__/
+analysis_result_*.json
+analysis_result_raw*.txt
+Results/*
+!Results/.gitkeep
+
